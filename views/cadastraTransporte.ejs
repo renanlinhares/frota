@@ -1,0 +1,93 @@
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+
+            <div class="container">
+                <div class="card" id="formulario-pergunta">
+                    <div class="card-header">
+                        <h1>Cadastro de transporte</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/salvarTransporte">
+
+                            <label>Caráter</label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Escolha uma opção</option>
+                                <option value="eletivo">Eletivo</option>
+                                <option value="urgencia">Urgência</option>
+                            </select>
+                            <br>
+                            <label>Tipo</label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Escolha uma opção</option>
+                                <option value="paciente">Paciente</option>
+                                <option value="acompanhante">Acompanhante</option>
+                            </select>
+                            <br>
+                            <label>Destino</label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Escolha uma opção</option>
+                                <% if(destinos[0].length!=0){ var i=1; destinos[0].forEach(function(data){ %>
+                                    <option value="<%=i%>">
+                                        <%=data.nome %>
+                                    </option>
+                                    <% i++; }) } else{ %>
+                                        <option value="<%=i%>">NÃO FORAM ENCONTRADOS DADOS</option>
+                                        <% } %>
+                            </select>
+                            <br>
+
+                            <label>Procedimento - Obs</label>
+                            <textarea class="form-control"></textarea>
+
+                            <br>
+
+                            <label>Pessoa</label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Escolha uma opção</option>
+                                <% if(destinos[1].length!=0){ var i=1; destinos[1].forEach(function(data){ %>
+                                    <option value="<%=i%>">
+                                        <%=data.nome %>
+                                    </option>
+                                    <% i++; }) } else{ %>
+                                        <option value="<%=i%>">NÃO FORAM ENCONTRADOS DADOS</option>
+                                        <% } %>
+                            </select>
+
+                            <br>
+                            <br>
+
+                            <label>Data de Atendimento</label>
+                            <input class="form-control" name="dataAtendimento"></input>
+
+                            <br>
+
+                            <label>Data de Atendimento</label>
+                            <input class="form-control" name="dataAtendimento"></input>
+
+                            <br>
+
+                            <label>Acompanhante de quem? </label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Escolha uma opção</option>
+                                <% if(destinos[1].length!=0){ var i=1; destinos[1].forEach(function(data){ %>
+                                    <option value="<%=i%>">
+                                        <%=data.nome %>
+                                    </option>
+                                    <% i++; }) } else{ %>
+                                        <option value="<%=i%>">NÃO FORAM ENCONTRADOS DADOS</option>
+                                        <% } %>
+                            </select>
+
+                            <hr>
+                            <button class="btn btn-success">Cadastrar transporte</button>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>

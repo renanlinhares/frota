@@ -1,0 +1,52 @@
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+
+            <div class="container">
+                <div class="table table-striped" style="align-content: center;">
+                    <div class="container">
+                        <div class="card" id="formulario-pergunta">
+                            <div class="card-header">
+                                <h1>Cadastrar Destinos</h1>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" action="/salvarpergunta">
+
+                                    <label>Nome do Estabelecimento</label>
+                                    <input class="form-control" name="nomeDestino">
+                                    <br>
+                                    <label>Distancia</label>
+                                    <input class="form-control" name="distancia">
+                                    <br>
+                                    <label>CNES</label>
+                                    <input class="form-control" name="cnes">
+                                    <br>
+                                    <label>Cidade</label>
+                                    <select class="custom-select" id="inputGroupSelect02">
+                                        <option selected>Escolha uma opção</option>
+                                        <% if(destinos[1].length!=0){ var i=1; 
+                                            destinos[1].forEach(function(data){ %> 
+                                             <option value="<%=i%>" ><%=data.nome %></option>
+                                             <% i++; })
+                                          } else{ %>
+
+                                            <h1>NÃO FORAM ENCONTRADOS DADOS!</h1>
+
+                                        <% } %>
+                                    </select>
+
+                                    <hr>
+
+                                    <button class="btn btn-success">Cadastrar destino</button>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>

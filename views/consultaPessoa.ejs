@@ -1,0 +1,61 @@
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+
+
+
+            <div class="container">
+                <div class="table table-striped" style="align-content: center;">
+                    <hr>
+                    <h2>Consulta de pessoas</h2>
+                    <hr>
+                    <hr>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                    <hr>
+                    <table style="align-content: center;">
+                        <thead class="thead-dark">
+                            <tr>
+
+                                <th>Nome</th>
+                                <th>Sexo</th>
+                                <th>CPF</th>
+                                <th>CNS</th>
+
+                            </tr>
+                        </thead>
+                        <% if(pessoa.length!=0){ var i=1; pessoa.forEach(function(data){ %>
+                            <tr>
+                                <td>
+                                    <%=data.nome %>
+                                </td>
+                                <td>
+                                    <%=data.sexo %>
+                                </td>
+                                <td>
+                                    <%=data.cpf_paci%>
+                                </td>
+                                <td>
+                                    <%=data.cns%>
+                                </td>
+                            </tr>
+                            <% i++; }) %>
+                                <% } else{ %>
+                                    <tr>
+                                        <td colspan="7">Não foram encontrados dados</td>
+                                    </tr>
+                                    <% } %>
+                    </table>
+                </div>
+            </div>
+    </body> 
+    <%- include('./partials/footer.ejs') %>

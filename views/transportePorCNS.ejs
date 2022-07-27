@@ -1,0 +1,135 @@
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+
+            <div class="container">
+
+                <div class="pesquisaCNS">
+                    <div class="card-header">
+
+                        <label>
+                            <h2>Cartão CNS</h2>
+                        </label>
+                        <input onkeyup="myFunction()" type="text" id="formBuscaCNS" placeholder="Digite o número do cartão" class="form-control" name="CNS">
+                        <br>
+                        <div class="vertical-right">
+                            <button class="btn btn-success">Pesquisar transportes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="container" style="width:max-content">
+                    <div id="tabelaTransportesCNS" class="table table-striped" style="width: max-content;">
+                        <table id="tabela">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>CNS</th>
+                                    <th>Status</th>
+                                    <th>Horário do Atendimento</th>
+                                    <th>Data do Atendimento</th>
+                                    <th>Observação</th>
+                                </tr>
+                            </thead>
+                           <% if(transporte.length!=0){ var i=1; transporte.forEach(function(data){ %>
+                                <tr>
+                                    <td>
+                                        <%=data.Pessoa_cns %>
+                                    </td>
+                                    <td>
+                                        <%=data.status %>
+                                    </td>
+                                    <td>
+                                        <%=data.horarioAtendimento%>
+                                    </td>
+                                    <td>
+                                        <%=data.dataAtendimento%>
+                                    </td>
+                                    <td>
+                                        <%=data.obs%>
+                                    </td>
+                                </tr>
+                                <% i++; }) %>
+                                    <% } else{ %>
+                                        <tr>
+                                            <td colspan="7">Não foram encontrados dados</td>
+                                        </tr>
+                                        <% } %>
+                                        <tbody id="tbody"></tbody>
+
+                                    </table>
+                    </div>
+                </div>
+
+
+
+                <script>
+                    function myFunction() {
+                      // Declare variables
+                      var input, filter, table, tr, td, i, txtValue;
+                      input = document.getElementById("formBuscaCNS");
+                      filter = input.value.toUpperCase();
+                      table = document.getElementById("tabela");
+                      tr = table.getElementsByTagName("tr");
+                    
+                      // Loop through all table rows, and hide those who don't match the search query
+                      for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                          txtValue = td.textContent || td.innerText;
+                          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                          } else {
+                            tr[i].style.display = "none";
+                          }
+                        }
+                      }
+                    }
+                    </script>
+
+
+            <!--
+           <script>
+                
+                var tbody = document.getElementById("tbody");
+
+                var dados;
+
+
+                if (transporte.length != 0){
+                    var i=0; transporte.forEach(function(data){
+                        console.log(data.Pessoa_CNS);
+                        i++;
+                    }) 
+                };
+
+                console.log(dados[0][0]);
+
+                for (var i = 0; i < dados.length; i++) {
+                    var tr = "<tr>" + 
+                        "<td>" + dados[i][0] + "</td>" +
+                        "<td>" + dados[i][1] + "</td>" +
+                        "<td>" + dados[i][2] + "</td>" +
+                        "<td>" + dados[i][3] + "</td>" +
+                        "<td>" + dados[i][4] + "</td>" +
+                        "</tr>";
+
+                        tbody.innerHTML += tr;
+
+                        var tr = tbody.childNodes;
+                }
+
+
+               
+
+            </script> 
+-->
+
+            </div>
+
+
+            </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>

@@ -1,0 +1,96 @@
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+            <div class="container">
+                <div class="card" id="formulario-pergunta">
+                    <div class="card-header">
+                        <h1>Cadastrar Pessoa</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/salvarpergunta">
+                            <label>Nome da Pessoa</label>
+                            <input type="text" placeholder="Título" class="form-control" name="nome">
+                            <br>
+                            <label>Cartão do SUS</label>
+                            <input placeholder="Escreva o cartão do SUS aqui" class="form-control" name="cns"></input> 
+                            <br>
+                            <label>Raça</label>
+                            <input placeholder="Raça" class="form-control" name="raca"></input>
+                            <br>
+                            <label>Sexo</label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Escolha uma opção</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Feminino</option>
+                                <option value="3">Indefinido</option>
+                            </select>
+
+                            <br>
+                            <br>
+                            <label>Tipo logradouro</label>
+                            <input type="text" class="form-control">
+                            <br>
+                            <label>Endereço:</label>
+                            <textarea class="form-control"></textarea>
+
+                            <br>
+
+                            <label>Número</label>
+                            <input class="form-control" name="numero"></input>
+
+                            <br>
+
+                            <label>Bairro</label>
+                            <input class="form-control" name="bairro"></input>
+
+                            <br>
+
+                            <label>CEP</label>
+                            <input class="form-control" name="cep"></input>
+
+                            <br>
+
+                            <label>Data de Nascimento</label>
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+
+                            <br>
+
+                            <label>CPF</label>
+                            <input class="form-control" name="cpf"></input>
+
+                            <br>
+
+                            <label>RG</label>
+                            <input class="form-control" name="rg"></input>
+
+                            <br>
+
+                            <label>Informações sobre o paciente</label>
+                            <textarea class="form-control"></textarea>
+
+                            <br>
+
+                            <label>Status</label>
+                            <input class="form-control" name="status"></input>
+
+                            <br>
+
+                            <label>Acompanhante</label>
+                            <input class="form-control" name="acompanhante"></input>
+
+                            <br>
+
+                            <label>Nacionalidade</label>
+                            <input class="form-control" name="nacionalidade"></input>
+
+                            <br>
+
+                            <button class="btn btn-success">Cadastrar Pessoa</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </body>
+    <%- include('./partials/footer.ejs') %>
